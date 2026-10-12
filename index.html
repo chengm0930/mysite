@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心繪說話 ── 曼陀羅繪畫與心流療癒之旅</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Serif TC & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        watercolor: {
+                            pink: '#fbcfe8',
+                            purple: '#e9d5ff',
+                            blue: '#bae6fd',
+                            teal: '#ccfbf1',
+                            cream: '#fdfbf7',
+                            ink: '#2d3748',
+                            softRose: '#f43f5e',
+                            gold: '#d97706'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        display: ['"Playfair Display"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: #fdfbf7;
+            color: #2d3748;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        html.dark body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        /* 夢幻水彩漸層暈染背景 */
+        .watercolor-blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.6;
+            border-radius: 50%;
+            z-index: 0;
+            animation: floatBlob 12s infinite alternate ease-in-out;
+            transition: opacity 0.5s ease;
+        }
+
+        html.dark .watercolor-blob {
+            opacity: 0.25;
+            filter: blur(80px);
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+            100% { transform: translate(-20px, 30px) scale(0.95); }
+        }
+
+        /* 水彩卡片模糊質感 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(186, 110, 160, 0.1);
+            transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        html.dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 旋轉曼陀羅裝飾動畫 */
+        .rotating-mandala {
+            animation: spinMandala 60s linear infinite;
+        }
+        @keyframes spinMandala {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 漸層文字 */
+        .gradient-text {
+            background: linear-gradient(135deg, #be185d 0%, #7c3aed 50%, #0369a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html.dark .gradient-text {
+            background: linear-gradient(135deg, #f472b6 0%, #c084fc 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 音樂跳動波浪動畫 */
+        .music-bar {
+            display: inline-block;
+            width: 3px;
+            background-color: #c084fc;
+            border-radius: 3px;
+            animation: bounce 1s infinite ease-in-out;
+        }
+        .music-bar:nth-child(1) { height: 10px; animation-delay: 0.1s; }
+        .music-bar:nth-child(2) { height: 16px; animation-delay: 0.3s; }
+        .music-bar:nth-child(3) { height: 8px;  animation-delay: 0.2s; }
+        .music-bar:nth-child(4) { height: 14px; animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: scaleY(0.4); }
+            50% { transform: scaleY(1); }
+        }
+
+        .music-paused .music-bar {
+            animation-play-state: paused;
+            transform: scaleY(0.3);
+        }
+    </style>
+</head>
+<body class="relative antialiased text-gray-800 dark:text-gray-100">
+
+    <!-- 背景光暈圓點 -->
+    <div class="watercolor-blob w-96 h-96 bg-pink-300 dark:bg-pink-900 top-10 -left-20"></div>
+    <div class="watercolor-blob w-80 h-80 bg-purple-300 dark:bg-purple-900 top-1/3 -right-20 animation-delay-2000"></div>
+    <div class="watercolor-blob w-[30rem] h-[30rem] bg-sky-200 dark:bg-sky-900 bottom-10 left-1/4 animation-delay-4000"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card transition-all duration-300 py-3 px-6 md:px-12 flex justify-between items-center shadow-sm">
+        <a href="#section1" class="text-xl md:text-2xl font-bold gradient-text tracking-wider flex items-center gap-2">
+            <span>♾️</span> <span>心繪說話</span>
+        </a>
+        
+        <div class="hidden lg:flex space-x-6 text-sm font-medium text-gray-700 dark:text-gray-200 items-center">
+            <a href="#section1" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">01. 歡迎啟航</a>
+            <a href="#section2" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">02. 內在對話</a>
+            <a href="#ai-inspiration" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors text-purple-600 dark:text-purple-300 font-bold">✨ AI 心靈繪圖導師</a>
+            <a href="#section3" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">03. 專業認證</a>
+            <a href="#section4" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">04. 關於曼陀羅</a>
+            <a href="#section5" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">05. 療癒入門課</a>
+            <a href="#section6" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">06. 創作元素</a>
+            <a href="#section7" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">07. 課程規劃</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <!-- 社群快速連結 (FB, LINE, Email) -->
+            <div class="hidden md:flex items-center gap-2 text-lg text-gray-600 dark:text-gray-300 pr-2 border-r border-gray-300 dark:border-slate-700">
+                <a href="https://www.facebook.com/share/1Bg5A7pbju/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors p-1" title="Facebook 粉絲專頁">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://line.me/ti/g2/KFFq-kL-t9SCDEoyeGZVO-zJH1emXtk52in8GQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-500 transition-colors p-1" title="LINE 社群交流">
+                    <i class="fa-brands fa-line"></i>
+                </a>
+                <a href="mailto:chengo0930@gmail.com?subject=【心繪說話】曼陀羅課程諮詢與報名&body=你好，我想瞭解曼陀羅療癒課程！%0D%0A%0D%0A【學員聯絡資訊】%0D%0A我的姓名/稱呼：%0D%0A我的 Email：%0D%0A我的聯絡電話：%0D%0A%0D%0A想諮詢的主題或問題：" class="hover:text-pink-500 transition-colors p-1" title="Email 聯絡我們（自動帶入範本）">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- 暗黑 / 淺色模式切換按鈕 -->
+            <button id="theme-toggle" class="p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 text-gray-700 dark:text-amber-300 hover:bg-white dark:hover:bg-slate-700 shadow-sm border border-gray-200 dark:border-slate-700 transition-all" title="切換深淺模式">
+                <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-lg hidden"></i>
+                <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-lg hidden"></i>
+            </button>
+
+            <a href="#section7" class="hidden sm:inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:opacity-95 transition-all">
+                預約啟航
+            </a>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-700 dark:text-gray-200 text-2xl focus:outline-none p-1">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg z-40 flex flex-col justify-center items-center gap-6 text-lg font-medium transform translate-x-full transition-transform duration-300 lg:hidden text-gray-800 dark:text-gray-200">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-2xl text-gray-600 dark:text-gray-300 p-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#section1" class="mobile-link">01. 歡迎啟航</a>
+        <a href="#section2" class="mobile-link">02. 內在對話</a>
+        <a href="#ai-inspiration" class="mobile-link text-purple-600 dark:text-purple-400 font-bold">✨ AI 心靈繪圖導師</a>
+        <a href="#section3" class="mobile-link">03. 專業認證</a>
+        <a href="#section4" class="mobile-link">04. 關於曼陀羅</a>
+        <a href="#section5" class="mobile-link">05. 療癒入門課</a>
+        <a href="#section6" class="mobile-link">06. 創作元素</a>
+        <a href="#section7" class="mobile-link">07. 課程規劃</a>
+
+        <!-- 行動版選單社群按鈕 -->
+        <div class="flex items-center gap-6 text-2xl pt-4 border-t border-gray-200 dark:border-slate-800">
+            <a href="https://www.facebook.com/share/1Bg5A7pbju/" target="_blank" rel="noopener noreferrer" class="text-blue-600">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://line.me/ti/g2/KFFq-kL-t9SCDEoyeGZVO-zJH1emXtk52in8GQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="text-emerald-500">
+                <i class="fa-brands fa-line"></i>
+            </a>
+            <a href="mailto:chengo0930@gmail.com?subject=【心繪說話】曼陀羅課程諮詢與報名&body=你好，我想瞭解曼陀羅療癒課程！%0D%0A%0D%0A【學員聯絡資訊】%0D%0A我的姓名/稱呼：%0D%0A我的 Email：%0D%0A我的聯絡電話：%0D%0A%0D%0A想諮詢的主題或問題：" class="text-pink-500" title="Email 聯絡我們">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <main class="relative z-10 pt-20">
+
+        <!-- 第 1 頁：01. 歡迎啟航 -->
+        <section id="section1" class="min-h-[90vh] flex items-center justify-center px-6 py-12 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center relative">
+                <div class="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
+                    <svg class="w-[500px] h-[500px] rotating-mandala text-purple-800 dark:text-purple-300" viewBox="0 0 100 100" fill="currentColor">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+                        <path d="M50 5 Q55 25 50 45 Q45 25 50 5 Z" />
+                        <path d="M50 95 Q55 75 50 55 Q45 75 50 95 Z" />
+                        <path d="M5 50 Q25 55 45 50 Q25 45 5 50 Z" />
+                        <path d="M95 50 Q75 55 55 50 Q75 45 95 50 Z" />
+                    </svg>
+                </div>
+
+                <!-- 主理人形象照 -->
+                <div class="mb-6 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-pink-400 via-purple-400 to-sky-400 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        <img src="https://img.ai365.fans/cdn-cgi/image/width=1400,quality=90,format=auto/artworks/cbda5967-967a-4da3-ae81-ab9af7fd377b/4v02dp1kpew.png" 
+                             alt="心繪說話主理人" 
+                             class="relative w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-xl">
+                    </div>
+                </div>
+
+                <div class="inline-block mb-4 px-4 py-1.5 rounded-full glass-card text-purple-700 dark:text-purple-300 text-sm font-semibold tracking-widest uppercase">
+                    ♾️ 歡迎啟航
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-bold mb-4 gradient-text leading-tight">
+                    心繪說話
+                </h1>
+                <h2 class="text-2xl sm:text-3xl font-medium text-purple-800 dark:text-purple-300 mb-6 tracking-wider">
+                    歡迎啟航
+                </h2>
+                <p class="text-lg sm:text-2xl text-gray-600 dark:text-gray-300 mb-10 tracking-wide font-light">
+                    你只要帶著一顆心，展開專屬你的畫冊
+                </p>
+
+                <!-- 三大心境卡片 (赤子之心、好奇之心、探索之心) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <!-- 赤子之心：內嵌圖片 -->
+                    <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center">
+                        <div class="text-4xl mb-3">☘️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-pink-700 dark:text-pink-300">赤子之心</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">懷抱最純粹的好奇與快樂，自由揮灑色彩。</p>
+                        
+                        <div class="w-full relative rounded-xl overflow-hidden shadow-inner border border-pink-200/60 dark:border-pink-900/40 group bg-pink-50/50 dark:bg-slate-800/50">
+                            <img src="https://img.ai365.fans/cdn-cgi/image/width=1400,quality=90,format=auto/artworks/cbda5967-967a-4da3-ae81-ab9af7fd377b/q7qlc0ynzgm.jpg" 
+                                 alt="赤子之心創作" 
+                                 class="w-full h-48 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.src='https://placehold.co/400x300/fbcfe8/be185d?text=Mandala'">
+                            <div class="absolute inset-0 pointer-events-none border border-white/40 dark:border-slate-700/40 rounded-xl"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 好奇之心：內嵌影音內容 -->
+                    <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center">
+                        <div class="text-4xl mb-3">☘️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-700 dark:text-purple-300">好奇之心</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">探索線條與色塊的組合，驚喜每一次發現。</p>
+                        
+                        <div class="w-full relative rounded-xl overflow-hidden shadow-inner border border-purple-200/60 dark:border-purple-900/40 group bg-purple-50/50 dark:bg-slate-800/50">
+                            <video class="w-full h-48 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" 
+                                   autoplay loop muted playsinline preload="auto">
+                                <source src="https://img.ai365.fans/artworks/cbda5967-967a-4da3-ae81-ab9af7fd377b/fyxjbd4477.mp4" type="video/mp4">
+                                您的瀏覽器不支援影片播放。
+                            </video>
+                            <div class="absolute inset-0 pointer-events-none border border-white/40 dark:border-slate-700/40 rounded-xl"></div>
+                        </div>
+                    </div>
+
+                    <!-- 探索之心：內嵌圖片 -->
+                    <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center">
+                        <div class="text-4xl mb-3">☘️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-sky-700 dark:text-sky-300">探索之心</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">深入內在未知的角落，體驗創意的無限。</p>
+                        
+                        <div class="w-full relative rounded-xl overflow-hidden shadow-inner border border-sky-200/60 dark:border-sky-900/40 group bg-sky-50/50 dark:bg-slate-800/50">
+                            <img src="https://img.ai365.fans/cdn-cgi/image/width=1400,quality=90,format=auto/artworks/cbda5967-967a-4da3-ae81-ab9af7fd377b/lbuca9qylvn.jpg" 
+                                 alt="探索之心創作" 
+                                 class="w-full h-48 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.src='https://placehold.co/400x300/bae6fd/0369a1?text=Exploration'">
+                            <div class="absolute inset-0 pointer-events-none border border-white/40 dark:border-slate-700/40 rounded-xl"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                    <a href="#section2" class="inline-flex items-center gap-2 text-purple-700 dark:text-purple-300 font-medium hover:gap-4 transition-all">
+                        <span>向下探索心靈話語</span>
+                        <i class="fa-solid fa-arrow-down-long"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 2 頁：02. 內在對話 -->
+        <section id="section2" class="min-h-[80vh] flex items-center justify-center px-6 py-16">
+            <div class="max-w-3xl mx-auto glass-card p-8 md:p-14 rounded-3xl text-center relative border border-white/60 dark:border-slate-700/60 shadow-xl">
+                <div class="text-purple-400 text-3xl mb-4"><i class="fa-solid fa-quote-left"></i></div>
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-gray-800 dark:text-gray-100 leading-relaxed">
+                    懷抱赤子之心的心境玩畫
+                </h2>
+                <div class="space-y-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                    <p class="text-purple-900 dark:text-purple-300 font-normal">
+                        ☘️ 畫，不只是畫，是心話正在被看見──
+                    </p>
+                    <p>
+                        而你以為在遠方的答案，<br class="hidden sm:inline">
+                        其實一直就在你心中。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 pt-8 border-t border-purple-100 dark:border-slate-700">
+                    <div class="p-3 bg-white/50 dark:bg-slate-800/50 rounded-xl">
+                        <span class="block text-purple-600 dark:text-purple-400 font-bold text-lg">整理</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Organize</span>
+                    </div>
+                    <div class="p-3 bg-white/50 dark:bg-slate-800/50 rounded-xl">
+                        <span class="block text-pink-600 dark:text-pink-400 font-bold text-lg">釐清</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Clarify</span>
+                    </div>
+                    <div class="p-3 bg-white/50 dark:bg-slate-800/50 rounded-xl">
+                        <span class="block text-sky-600 dark:text-sky-400 font-bold text-lg">清空</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Clear</span>
+                    </div>
+                    <div class="p-3 bg-white/50 dark:bg-slate-800/50 rounded-xl">
+                        <span class="block text-teal-600 dark:text-teal-400 font-bold text-lg">歸零</span>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Reset</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ✨ AI 心靈繪圖靈感與療癒指引區塊 (Gemini API) -->
+        <section id="ai-inspiration" class="min-h-[80vh] flex items-center justify-center px-6 py-16 relative">
+            <div class="max-w-4xl mx-auto w-full glass-card p-8 md:p-12 rounded-3xl relative border border-purple-200/80 dark:border-purple-800/80 shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-widest mb-3">
+                        ✨ Gemini AI 智慧智慧導引
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold gradient-text">AI 內在心語與創作靈感生成器</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm md:text-base">
+                        輸入你此刻的心情、近況或困惑，讓 AI 為你解讀內在渴望，並生成專屬的曼陀羅創作靈感與色彩指引。
+                    </p>
+                </div>
+
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                            🧘 聊聊你現在的感受、心情或想療癒的主題：
+                        </label>
+                        <textarea id="ai-feeling-input" rows="3" 
+                            placeholder="例如：最近工作覺得有點焦慮疲憊，希望能找到平靜，重拾創作的熱情..." 
+                            class="w-full px-4 py-3 rounded-2xl border border-purple-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-400 bg-white/90 dark:bg-slate-800/90 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 text-sm md:text-base resize-none shadow-inner"></textarea>
+                    </div>
+
+                    <!-- 快速選擇心情標籤 -->
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="text-gray-500 dark:text-gray-400 flex items-center">快速點擊：</span>
+                        <button type="button" onclick="quickFillMood('尋求平靜與安定')" class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 hover:bg-purple-200 dark:hover:bg-purple-800 rounded-full text-purple-700 dark:text-purple-300 transition-all">🌱 尋求平靜</button>
+                        <button type="button" onclick="quickFillMood('釋放壓力和焦慮')" class="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 hover:bg-pink-200 dark:hover:bg-pink-800 rounded-full text-pink-700 dark:text-pink-300 transition-all">🌊 釋放壓力</button>
+                        <button type="button" onclick="quickFillMood('尋找創作靈感與熱情')" class="px-3 py-1 bg-amber-100 dark:bg-amber-900/50 hover:bg-amber-200 dark:hover:bg-amber-800 rounded-full text-amber-700 dark:text-amber-300 transition-all">✨ 啟發靈感</button>
+                        <button type="button" onclick="quickFillMood('迎接改變與自信')" class="px-3 py-1 bg-sky-100 dark:bg-sky-900/50 hover:bg-sky-200 dark:hover:bg-sky-800 rounded-full text-sky-700 dark:text-sky-300 transition-all">☀️ 擁抱自信</button>
+                    </div>
+
+                    <button id="generate-ai-btn" onclick="generateAIInspiration()" class="w-full py-3.5 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 text-white font-bold rounded-2xl shadow-lg hover:opacity-95 active:scale-[0.99] transition-all flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>生成我的專屬曼陀羅指引</span>
+                    </button>
+                </div>
+
+                <!-- AI 生成結果卡片區 -->
+                <div id="ai-result-box" class="hidden mt-8 p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-purple-200/80 dark:border-purple-800/80 shadow-inner space-y-6">
+                    <div class="border-b border-purple-100 dark:border-slate-700 pb-4 flex justify-between items-center">
+                        <h3 class="font-bold text-lg md:text-xl text-purple-900 dark:text-purple-300 flex items-center gap-2">
+                            <span>🔮</span> <span>心靈對話與靈感畫布</span>
+                        </h3>
+                        <span class="text-xs text-gray-400 dark:text-gray-500">Gemini 3.1 AI Insights</span>
+                    </div>
+
+                    <!-- 1. 溫暖對話 -->
+                    <div>
+                        <h4 class="text-xs font-bold text-pink-600 dark:text-pink-400 uppercase tracking-widest mb-1">【 內在小語 】</h4>
+                        <p id="ai-message" class="text-gray-700 dark:text-gray-200 leading-relaxed font-light italic text-base md:text-lg"></p>
+                    </div>
+
+                    <!-- 2. 色彩建議 -->
+                    <div>
+                        <h4 class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-2">【 建議色彩能量 】</h4>
+                        <div id="ai-colors" class="flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <!-- 3. 圖騰與元件元素建議 -->
+                    <div>
+                        <h4 class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest mb-2">【 繪圖構圖推薦 】</h4>
+                        <ul id="ai-elements" class="list-disc list-inside text-sm md:text-base text-gray-700 dark:text-gray-300 space-y-1"></ul>
+                    </div>
+
+                    <!-- 4. 專屬肯定句 -->
+                    <div class="bg-purple-50/80 dark:bg-purple-950/40 p-4 rounded-xl border border-purple-200 dark:border-purple-900/60 text-center">
+                        <span class="text-xs text-purple-500 dark:text-purple-400 block mb-1">🧘 今天帶給自己的肯定祈願文</span>
+                        <p id="ai-affirmation" class="font-semibold text-purple-900 dark:text-purple-200 text-base md:text-lg"></p>
+                    </div>
+                </div>
+
+                <!-- 載入中動畫 -->
+                <div id="ai-loading" class="hidden mt-8 text-center py-8">
+                    <div class="inline-block animate-spin text-3xl text-purple-600 dark:text-purple-400 mb-3">
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm animate-pulse">正在為您進行心靈感應與曼陀羅構圖解讀...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 3 頁：03. 專業認證 -->
+        <section id="section3" class="min-h-[80vh] flex items-center justify-center px-6 py-16">
+            <div class="max-w-5xl mx-auto w-full">
+                <div class="text-center mb-12 flex flex-col items-center">
+                    <img src="https://img.ai365.fans/cdn-cgi/image/width=1400,quality=90,format=auto/artworks/cbda5967-967a-4da3-ae81-ab9af7fd377b/4v02dp1kpew.png" 
+                         alt="心繪說話主理人" 
+                         class="w-24 h-24 rounded-full object-cover border-2 border-purple-200 dark:border-purple-800 shadow-md mb-4">
+                    <span class="text-sm uppercase tracking-widest text-purple-600 dark:text-purple-400 font-bold">Professional Experience</span>
+                    <h2 class="text-3xl md:text-4xl font-bold gradient-text mt-2">專業認證與靈性療癒</h2>
+                    <p class="text-gray-500 dark:text-gray-400 mt-2">多元專業領域，引導您找到最舒心的創作步調</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-pink-400 hover:shadow-lg transition-all">
+                        <div class="text-pink-500 text-2xl mb-2"><i class="fa-solid fa-certificate"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">線構曼陀羅認證師資</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">精緻線條構圖，培養深度專注與心境沉澱。</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-purple-400 hover:shadow-lg transition-all">
+                        <div class="text-purple-500 text-2xl mb-2"><i class="fa-solid fa-circle-dot"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">立體水玉曼陀羅認證師資</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">立體點點繪製，感受堆疊中的和諧與圓滿。</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-sky-400 hover:shadow-lg transition-all">
+                        <div class="text-sky-500 text-2xl mb-2"><i class="fa-solid fa-paintbrush"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">心流隨手畫</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">順應直覺與當下，無拘無束地讓靈感自由流動。</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-teal-400 hover:shadow-lg transition-all">
+                        <div class="text-teal-500 text-2xl mb-2"><i class="fa-solid fa-spa"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">香癒之旅</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">結合嗅覺與視覺，帶來全感官的療癒體驗。</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-amber-400 hover:shadow-lg transition-all">
+                        <div class="text-amber-500 text-2xl mb-2"><i class="fa-solid fa-smog"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">韓國薰香</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">傳統與現代薰香工藝，安撫煩躁的情緒。</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-rose-400 hover:shadow-lg transition-all">
+                        <div class="text-rose-500 text-2xl mb-2"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">擴大療癒</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">引導高頻能量，達到身心靈的平衡與和諧。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 4 頁：04. 關於曼陀羅 -->
+        <section id="section4" class="min-h-[80vh] flex items-center justify-center px-6 py-16 relative">
+            <div class="max-w-4xl mx-auto glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="relative w-64 h-64 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-pink-300 via-purple-300 to-sky-300 dark:from-pink-900 dark:via-purple-900 dark:to-sky-900 rounded-full blur-xl opacity-70"></div>
+                            <div class="relative w-56 h-56 rounded-full border-2 border-white/80 dark:border-slate-700/80 glass-card flex items-center justify-center p-4 text-center">
+                                <div>
+                                    <span class="text-4xl block mb-2">☸️</span>
+                                    <span class="font-bold text-gray-800 dark:text-gray-100 text-lg">Mandala</span>
+                                    <span class="block text-xs text-gray-500 dark:text-gray-400">梵文：圓與中心</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <span class="text-xs uppercase font-bold tracking-widest text-purple-600 dark:text-purple-400">Sacred Geometry</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100">
+                            曼陀羅源自梵文 Mandala
+                        </h2>
+                        <p class="text-purple-900 dark:text-purple-300 font-semibold text-lg">
+                            意為「圓」與「中心」，可以無限擴大。
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            透過有趣的曼陀羅繪畫，讓你在色彩與圖案中放鬆心情、培養專注力。在畫紙的方寸之間，探索內在圓滿的世界。
+                        </p>
+                        <div class="pt-4 flex items-center gap-3 text-lg font-medium text-amber-700 dark:text-amber-400">
+                            <span>🕉️ 曼陀羅也會帶來好運與祝福。</span>
+                        </div>
+                        <div class="text-purple-700 dark:text-purple-300 font-bold pt-2">
+                            如有任何疑問或合作預約，歡迎來信交流：<a href="mailto:chengo0930@gmail.com?subject=【心繪說話】曼陀羅課程諮詢與報名&body=你好，我想瞭解曼陀羅療癒課程！%0D%0A%0D%0A【學員聯絡資訊】%0D%0A我的姓名/稱呼：%0D%0A我的 Email：%0D%0A我的聯絡電話：%0D%0A%0D%0A想諮詢的主題或問題：" class="underline hover:text-pink-500 transition-colors">chengo0930@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 5 頁：05. 療癒入門課 -->
+        <section id="section5" class="min-h-[80vh] flex items-center justify-center px-6 py-16">
+            <div class="max-w-4xl mx-auto w-full glass-card p-8 md:p-12 rounded-3xl">
+                <div class="text-center mb-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400">Course Highlights</span>
+                    <h2 class="text-3xl font-bold gradient-text mt-2">05. 療癒入門課</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mt-2">開啟繪畫與靜心的完美第一步</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white/60 dark:bg-slate-800/60 rounded-2xl border border-purple-100 dark:border-slate-700">
+                        <div class="text-2xl text-purple-500 mb-2"><i class="fa-solid fa-palette"></i></div>
+                        <h3 class="font-bold text-lg mb-2">零基礎輕鬆上手</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">無需任何繪畫底子，從點與線開始，一步步進入專注而放鬆的心流體驗。</p>
+                    </div>
+                    <div class="p-6 bg-white/60 dark:bg-slate-800/60 rounded-2xl border border-pink-100 dark:border-slate-700">
+                        <div class="text-2xl text-pink-500 mb-2"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <h3 class="font-bold text-lg mb-2">身心釋放與療癒</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">透過圖騰與色彩的規律重覆，舒緩日常焦慮與壓力，找回平靜安定的力量。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 6 頁：06. 創作元素 -->
+        <section id="section6" class="min-h-[80vh] flex items-center justify-center px-6 py-16">
+            <div class="max-w-4xl mx-auto w-full glass-card p-8 md:p-12 rounded-3xl text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400">Elements</span>
+                <h2 class="text-3xl font-bold gradient-text mt-2 mb-8">06. 創作元素</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                    <div class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl">
+                        <div class="text-3xl mb-2">🌸</div>
+                        <h4 class="font-bold text-purple-700 dark:text-purple-300">花語與自然</h4>
+                    </div>
+                    <div class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl">
+                        <div class="text-3xl mb-2">✨</div>
+                        <h4 class="font-bold text-pink-700 dark:text-pink-300">幾何光輝</h4>
+                    </div>
+                    <div class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl">
+                        <div class="text-3xl mb-2">💧</div>
+                        <h4 class="font-bold text-sky-700 dark:text-sky-300">立體水滴</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第 7 頁：07. 課程規劃與聯絡 -->
+        <section id="section7" class="min-h-[80vh] flex items-center justify-center px-6 py-16">
+            <div class="max-w-3xl mx-auto w-full glass-card p-8 md:p-12 rounded-3xl text-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400">Get in Touch</span>
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mt-2 mb-6">07. 課程規劃與預約</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-8">開啟屬於你的心靈繪畫之旅，體驗色彩與圓滿的療癒力。</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="mailto:chengo0930@gmail.com?subject=【心繪說話】曼陀羅課程諮詢與報名&body=你好，我想瞭解曼陀羅療癒課程！%0D%0A%0D%0A【學員聯絡資訊】%0D%0A我的姓名/稱呼：%0D%0A我的 Email：%0D%0A我的聯絡電話：%0D%0A%0D%0A想諮詢的主題或問題：" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Email 預約諮詢</span>
+                    </a>
+                    <a href="https://line.me/ti/g2/KFFq-kL-t9SCDEoyeGZVO-zJH1emXtk52in8GQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-emerald-500 text-white font-bold rounded-full shadow-lg hover:bg-emerald-600 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-line"></i>
+                        <span>加入 LINE 社群</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 text-center text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-slate-800 relative z-10">
+        <p>© 心繪說話 . All rights reserved. | 聯絡信箱：<a href="mailto:chengo0930@gmail.com?subject=【心繪說話】曼陀羅課程諮詢與報名&body=你好，我想瞭解曼陀羅療癒課程！%0D%0A%0D%0A【學員聯絡資訊】%0D%0A我的姓名/稱呼：%0D%0A我的 Email：%0D%0A我的聯絡電話：%0D%0A%0D%0A想諮詢的主題或問題：" class="underline">chengo0930@gmail.com</a></p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        function quickFillMood(mood) {
+            document.getElementById('ai-feeling-input').value = mood;
+        }
+
+        function generateAIInspiration() {
+            const input = document.getElementById('ai-feeling-input').value.trim();
+            const loading = document.getElementById('ai-loading');
+            const resultBox = document.getElementById('ai-result-box');
+
+            if(!input) {
+                alert('請輸入您目前的感受或想探索的主題！');
+                return;
+            }
+
+            loading.classList.remove('hidden');
+            resultBox.classList.add('hidden');
+
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                resultBox.classList.remove('hidden');
+
+                document.getElementById('ai-message').innerText = `「當你寫下：${input}，這代表內在的心正期待一場溫柔的洗滌。給自己一點時間，將注意力放回呼吸與畫筆。」`;
+                
+                const colorsDiv = document.getElementById('ai-colors');
+                colorsDiv.innerHTML = `
+                    <span class="px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-900/60 text-pink-700 dark:text-pink-300 text-xs font-semibold">玫瑰粉 (柔和撫慰)</span>
+                    <span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 text-xs font-semibold">薰衣草紫 (沉靜直覺)</span>
+                    <span class="px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-900/60 text-sky-300 dark:text-sky-300 text-xs font-semibold font-semibold">海洋藍 (寬廣包容)</span>
+                `;
+
+                const elementsUl = document.getElementById('ai-elements');
+                elementsUl.innerHTML = `
+                    <li>以中心圓為核心，向外延展 8 瓣柔和的花瓣圖騰</li>
+                    <li>在花瓣間以立體水滴點點做堆疊，象徵能量累積與釋放</li>
+                    <li>外圍運用圓潤流暢的弧線進行包覆，給予安全感的守護</li>
+                `;
+
+                document.getElementById('ai-affirmation').innerText = "「我相信當下的每一步都是最好的安排，我在色彩中看見完整的自己。」";
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
