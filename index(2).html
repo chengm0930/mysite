@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【心繪說話】功能與技術極簡總覽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <!-- 頁頭 -->
+        <header class="text-center bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h1 class="text-2xl md:text-3xl font-bold text-purple-700">🌸 【心繪說話】功能與技術架構圖解說明</h1>
+            <p class="text-slate-500 mt-2 text-sm">用最簡單白話的方式，帶您了解網站的運作與功能！</p>
+        </header>
+
+        <!-- 📊 視覺化架構圖 -->
+        <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-sitemap text-purple-600"></i> 📊 網站架構運作圖
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center relative">
+                
+                <!-- 區塊 1 -->
+                <div class="bg-purple-50 p-5 rounded-xl border border-purple-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-desktop"></i>
+                        </div>
+                        <h3 class="font-bold text-purple-900 text-lg">1. 前端（訪客看到的畫面）</h3>
+                        <p class="text-xs text-purple-700 mt-2">手機電腦自動適應、深淺色切換、背景音樂播放、水彩質感體驗。</p>
+                    </div>
+                    <span class="inline-block mt-4 bg-purple-200 text-purple-800 text-xs font-bold py-1 px-3 rounded-full">超快速載入</span>
+                </div>
+
+                <!-- 區塊 2 -->
+                <div class="bg-pink-50 p-5 rounded-xl border border-pink-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="font-bold text-pink-900 text-lg">2. AI 導師（Gemini 智慧）</h3>
+                        <p class="text-xs text-pink-700 mt-2">訪客輸入心情，AI 自動給予療癒文字、色彩搭配與曼陀羅畫法建議。</p>
+                    </div>
+                    <span class="inline-block mt-4 bg-pink-200 text-pink-800 text-xs font-bold py-1 px-3 rounded-full">即時智慧互動</span>
+                </div>
+
+                <!-- 區塊 3 -->
+                <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <h3 class="font-bold text-emerald-900 text-lg">3. 後端（Google 試算表）</h3>
+                        <p class="text-xs text-emerald-700 mt-2">學員填寫預約表單，資料自動寫入您的 Google Excel，免費又安全。</p>
+                    </div>
+                    <span class="inline-block mt-4 bg-emerald-200 text-emerald-800 text-xs font-bold py-1 px-3 rounded-full">0 租金 / 自動儲存</span>
+                </div>
+
+            </div>
+
+            <!-- SEO 標籤說明底列 -->
+            <div class="mt-6 bg-slate-100 p-4 rounded-xl text-center border border-slate-200">
+                <p class="text-xs text-slate-600 font-medium">
+                    🔍 <strong>全站兼具 AI 搜尋防護 (SEO/AEO/GEO)</strong>：讓 Google、ChatGPT、Perplexity 等 AI 能更容易找到並推薦您的網站。
+                </p>
+            </div>
+        </section>
+
+        <!-- 📝 條列式極簡說明 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- 網站功能 -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-purple-600"></i> ✨ 網站有什麼功能？
+                </h2>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>好看的畫面與深淺色切換</strong>：白天明亮、夜晚柔和，可點擊按鈕一鍵切換模式。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>AI 心靈繪圖導師</strong>：輸入心情後，AI 自動提供療癒對話、色彩建議與曼陀羅畫法。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>線上預約諮詢表單</strong>：學員線上填單，資料直接進到您的 Excel 試算表。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>一鍵開信寫 Mail</strong>：點擊 Email 按鈕直接開啟手機/電腦郵件，帶好範本免手打。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>懸浮音樂播放器</strong>：右下角懸浮按鈕，可自由關閉或播放靜心音樂。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 font-bold">•</span>
+                        <span><strong>一鍵加 LINE 社群</strong>：方便學員隨時加入交流群。</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 技術架構 -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-gears text-indigo-600"></i> 💡 技術採用了什麼？
+                </h2>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>純原生寫法 (Vanilla JS)</strong>：打開速度極快，不用安裝笨重的外掛套件。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>Gemini AI 技術</strong>：採用 Google AI 幫訪客產生繪畫靈感。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>Google Apps Script 免費後端</strong>：完全不用花錢租用伺服器與資料庫。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>獨立資料保護 (`@OnlyCurrentDoc`)</strong>：程式碼被限制只能存取該張試算表，安全性高。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>防資料衝突鎖定 (LockService)</strong>：很多人同時填表單也不會資料覆蓋或遺失。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">•</span>
+                        <span><strong>AI 搜尋引擎優化 (SEO/AEO/GEO)</strong>：讓 ChatGPT 與 Google 搜尋更容易引用您的網站。</span>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
